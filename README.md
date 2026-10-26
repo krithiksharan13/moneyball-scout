@@ -6,7 +6,7 @@ Moneyball Scout learns how the transfer market prices players across Europe's Bi
 players it values far above their market price. A walk-forward backtest shows those players' market values go on
 to grow faster than comparable players'.
 
-Built for the AQX Sports Analytics Data Bowl 4.0.
+Built for the AQX Sports Analytics Data Bowl 4.0 by **Krithik Sharan S A** and **Uday Kiran Reddy Mule**.
 
 ## The problem
 
@@ -108,6 +108,11 @@ src/scout.py           similarity search and undervalued board
 src/report.py          Gemini scouting reports (cached, rate limited)
 src/theme.py, src/components.py, src/ui.py   UI
 ```
+
+## Team
+
+- Krithik Sharan S A
+- Uday Kiran Reddy Mule
 
 ## License
 
