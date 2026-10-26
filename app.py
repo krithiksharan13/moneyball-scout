@@ -5,6 +5,8 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+import ui  # noqa: E402
+
 st.set_page_config(page_title="Moneyball Scout", page_icon="⚽", layout="wide")
 
 pages = [
@@ -14,4 +16,6 @@ pages = [
     st.Page("app_pages/player_report.py", title="Scouting Report", icon="📝"),
     st.Page("app_pages/results.py", title="Backtest", icon="📈"),
 ]
-st.navigation(pages).run()
+page = st.navigation(pages)
+ui.shell()
+page.run()

@@ -2,82 +2,100 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
+import components as c
+import theme
 import ui
+from fmt import eur
 
 result, rows = ui.load_backtest()
-best_name = result["best_model"]
-best = result["models"][best_name]
-budget = ui.eur(result["budget_eur"])
-
-st.title("📈 Backtest")
-st.markdown(
-    f"**Does a high value gap actually predict anything?** For each season from {result['flag_seasons'][0]} to "
-    f"{result['flag_seasons'][-1]}, the model was trained only on data available at the time. It picked the "
-    f"{result['shortlist_size_per_season']} most undervalued players under {budget}, and we tracked their "
-    "Transfermarkt value two years later."
-)
-
+best = result["models"][result["best_model"]]
 s = best["shortlist"]
-c1, c2, c3 = st.columns(3)
-c1.metric("Growth vs comparable players", f"{s['mean_excess_pct']:+.0f}%",
-          help="Compared with players of the same season, age band and value quintile")
-c2.metric("Hit rate", f"{s['hit_rate_pct']:.0f}%", help="Share of picks whose value grew more than their comparison group")
-c3.metric("Picks evaluated", s["n"])
+budget = eur(result["budget_eur"])
 
-st.subheader("Shortlist vs alternatives")
-compare = pd.DataFrame([
-    {"Strategy": "Moneyball Scout (market-gap model)", **result["models"]["market"]["shortlist"]},
-    {"Strategy": "Performance-only gap model", **result["models"]["performance"]["shortlist"]},
-    {"Strategy": "Naive scout: best npxG + xA per 90", **result["naive_output_baseline"]},
-    {"Strategy": f"Every player under {budget}", **result["all_budget_players"]},
+c.page_title("📈 Backtest", "Does a big value gap actually predict anything? We tested it on five past seasons.")
+
+st.html(f"""<div class="mb-hero" style="padding:22px 26px">
+<p><b>The test.</b> For each season from {result['flag_seasons'][0]} to {result['flag_seasons'][-1]}, the model was trained
+only on data available at the time. It picked the {result['shortlist_size_per_season']} most undervalued players under
+{budget}, and we checked their Transfermarkt value two years later against players of the same season, age and price
+band.</p></div>""")
+
+c.kpis([
+    {"label": "Value growth vs peers", "value": f"{s['mean_excess_pct']:+.0f}%", "accent": True,
+     "note": "average over two years, vs players of the same age and price band"},
+    {"label": "Hit rate", "value": f"{s['hit_rate_pct']:.0f}%", "note": "of picks grew more than their peers"},
+    {"label": "Picks tested", "value": s["n"], "note": f"{result['shortlist_size_per_season']} per season × 5 seasons"},
 ])
-fig = go.Figure(go.Bar(x=compare.mean_excess_pct, y=compare.Strategy, orientation="h",
-                       marker_color=[ui.ACCENT, "#86efac", ui.MUTED, "#cbd5e1"],
-                       text=[f"{v:+.0f}%" for v in compare.mean_excess_pct], textposition="outside"))
-fig.update_layout(height=280, margin=dict(t=10, l=10, r=40), xaxis_title="Value growth vs comparable players (2 years)",
-                  yaxis=dict(autorange="reversed"))
-st.plotly_chart(fig, width="stretch")
 
-st.subheader("The bigger the gap, the bigger the growth")
-st.caption("All players, split into ten equal groups by value gap within each season (1 = most overvalued, 10 = most undervalued).")
-deciles = best["decile_excess_pct"]
-fig = go.Figure(go.Bar(x=[f"D{k}" for k in deciles], y=list(deciles.values()),
-                       marker_color=[ui.ACCENT if v > 0 else "#ef4444" for v in deciles.values()],
-                       text=[f"{v:+.0f}%" for v in deciles.values()], textposition="outside"))
-fig.update_layout(height=360, margin=dict(t=10), yaxis_title="Value growth vs comparable players")
-st.plotly_chart(fig, width="stretch")
 
-st.subheader("Consistent across seasons")
-by = pd.DataFrame(best["by_season"]).T
-by.index = [ui.season_label(int(i)) for i in by.index]
-st.dataframe(by.rename(columns={"n": "Picks", "median_value_change_pct": "Median raw value change %",
-                                "mean_excess_pct": "Growth vs peers %", "hit_rate_pct": "Hit rate %"}),
-             width="stretch")
+def bar_text(v: float) -> str:
+    return f"{v:+.0f}%"
 
-st.subheader("Value growth vs production: the trade-off")
-st.caption("Same shortlist, but only picking players above a minimum output percentile. The market re-prices youth "
-           "and playing time more than production, so demanding output costs some growth but still beats the naive scout.")
+
+c.section("Our picks vs the alternatives", "Value growth vs comparable players, two years after being picked.")
+compare = pd.DataFrame([
+    ("Moneyball Scout", result["models"]["market"]["shortlist"]["mean_excess_pct"], theme.t("s1")),
+    ("Performance-only model", result["models"]["performance"]["shortlist"]["mean_excess_pct"], theme.t("muted")),
+    ("Naive scout (best npxG + xA)", result["naive_output_baseline"]["mean_excess_pct"], theme.t("muted")),
+    (f"Every player under {budget}", result["all_budget_players"]["mean_excess_pct"], theme.t("muted")),
+], columns=["strategy", "value", "color"])
+fig = go.Figure(go.Bar(x=compare.value, y=compare.strategy, orientation="h", marker=dict(color=compare.color,
+                       cornerradius=4), text=compare.value.map(bar_text), textposition="outside",
+                       textfont=dict(color=theme.t("ink")), hovertemplate="%{y}: %{x:+.1f}%<extra></extra>"))
+theme.style_fig(fig, height=260)
+fig.update_layout(bargap=0.35, margin=dict(l=10, r=50, t=10, b=10))
+fig.update_yaxes(autorange="reversed", tickfont=dict(color=theme.t("ink-2"), size=13), showgrid=False)
+fig.update_xaxes(ticksuffix="%", range=[min(0, compare.value.min()) - 2, compare.value.max() * 1.2])
+st.plotly_chart(fig, width="stretch", theme=None)
+
+c.section("The bigger the gap, the bigger the growth",
+          "All players, split into ten equal groups by value gap (1 = most overvalued, 10 = most undervalued).")
+dec = best["decile_excess_pct"]
+fig = go.Figure(go.Bar(x=[f"{k}" for k in dec], y=list(dec.values()),
+                       marker=dict(color=[theme.t("s1") if v > 0 else theme.t("neg") for v in dec.values()], cornerradius=4),
+                       text=[bar_text(v) for v in dec.values()], textposition="outside",
+                       textfont=dict(color=theme.t("ink-2")), hovertemplate="Group %{x}: %{y:+.1f}% vs peers<extra></extra>"))
+theme.style_fig(fig, height=360)
+fig.update_layout(bargap=0.25)
+fig.update_xaxes(title="Value-gap group (1 = most overvalued → 10 = most undervalued)", showgrid=False)
+fig.update_yaxes(ticksuffix="%", title="Growth vs peers")
+st.plotly_chart(fig, width="stretch", theme=None)
+
+c.section("Consistent across seasons", "Every season's shortlist beat its peers.")
+by = best["by_season"]
+c.kpis([{"label": f"Picked in {ui.season_label(int(k))}", "value": f"{v['mean_excess_pct']:+.0f}%",
+         "note": f"hit rate {v['hit_rate_pct']:.0f}%", "accent": True} for k, v in by.items()])
+
+c.section("Value growth vs production: the trade-off",
+          "Same shortlist, but only picking players above a minimum output percentile. Demanding production "
+          "costs some growth but still beats the naive scout.")
 sens = result["output_filter_sensitivity"]
-fig = go.Figure(go.Bar(x=[f"≥ {k}th pct" if k != "0" else "No filter" for k in sens],
-                       y=[v["mean_excess_pct"] for v in sens.values()], marker_color=ui.ACCENT,
+fig = go.Figure(go.Bar(x=["No filter" if k == "0" else f"≥ {k}th pct" for k in sens],
+                       y=[v["mean_excess_pct"] for v in sens.values()],
+                       marker=dict(color=theme.t("s1"), cornerradius=4),
                        text=[f"{v['mean_excess_pct']:+.0f}% · hit {v['hit_rate_pct']:.0f}%" for v in sens.values()],
-                       textposition="outside"))
-fig.add_hline(y=result["naive_output_baseline"]["mean_excess_pct"], line_dash="dash", line_color=ui.MUTED,
-              annotation_text="Naive scout", annotation_position="top left")
-fig.update_layout(height=340, margin=dict(t=20), yaxis_title="Value growth vs comparable players",
-                  xaxis_title="Minimum output percentile")
-st.plotly_chart(fig, width="stretch")
+                       textposition="outside", textfont=dict(color=theme.t("ink-2")),
+                       hovertemplate="%{x}: %{y:+.1f}% vs peers<extra></extra>"))
+fig.add_hline(y=result["naive_output_baseline"]["mean_excess_pct"], line_dash="dash", line_color=theme.t("muted"),
+              annotation_text="Naive scout", annotation_position="top left",
+              annotation_font=dict(color=theme.t("muted")))
+theme.style_fig(fig, height=340)
+fig.update_layout(bargap=0.35)
+fig.update_xaxes(title="Minimum output percentile", showgrid=False)
+fig.update_yaxes(ticksuffix="%", title="Growth vs peers", range=[0, max(v["mean_excess_pct"] for v in sens.values()) * 1.25])
+st.plotly_chart(fig, width="stretch", theme=None)
 
-st.subheader("Biggest hits")
-hits = pd.DataFrame(result["example_picks"]).head(15)
-hits["Value then"] = hits.value_eur.map(ui.eur)
-hits["Value 2 years later"] = hits.value_eur_plus2.map(ui.eur)
-st.dataframe(hits[["player", "season", "team", "age", "Value then", "Value 2 years later"]].rename(
-    columns={"player": "Player", "season": "Flagged in", "team": "Team", "age": "Age"}),
-    hide_index=True, width="stretch")
+c.section("Biggest hits", "Players the model flagged, and what they were worth two years later.")
+hits = pd.DataFrame(result["example_picks"]).head(12)
+hits["multiple"] = hits.value_eur_plus2 / hits.value_eur
+c.table(hits, {
+    "player": ("Player", str), "season": ("Flagged in", str), "team": ("Team then", str),
+    "age": ("Age", lambda v: f"{v:.0f}"), "value_eur": ("Value then", eur),
+    "value_eur_plus2": ("2 years later", eur), "multiple": ("Change", lambda v: f"{v:.1f}×"),
+}, numeric={"age", "value_eur", "value_eur_plus2", "multiple"})
 
 with st.expander("Method and limitations"):
-    st.markdown(f"""
+    st.markdown("""
 - **No look-ahead.** Each season's picks come from a model trained only on that season and earlier, with
   predictions made out-of-fold by player.
 - **Fair comparison.** Growth is measured against players from the same season, age band and value quintile,
