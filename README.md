@@ -1,5 +1,7 @@
 # ⚽ Moneyball Scout
 
+![Moneyball Scout](assets/thumbnail.png)
+
 **Find footballers who perform like expensive players but cost a fraction of the price.**
 
 **🔗 Live app: https://moneyball-scout-i4jmrkyytwz3guryvenkpg.streamlit.app/**
