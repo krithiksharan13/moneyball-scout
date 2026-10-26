@@ -2,6 +2,8 @@
 
 **Find footballers who perform like expensive players but cost a fraction of the price.**
 
+**🔗 Live app: https://moneyball-scout-i4jmrkyytwz3guryvenkpg.streamlit.app/**
+
 Moneyball Scout learns how the transfer market prices players across Europe's Big 5 leagues, then flags the
 players it values far above their market price. A walk-forward backtest shows those players' market values go on
 to grow faster than comparable players'.
