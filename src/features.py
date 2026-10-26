@@ -28,6 +28,16 @@ MARKET_FEATURES = PERFORMANCE_FEATURES + ["competition_id", "team_xg_pm", "team_
 CATEGORICAL = ["position_group", "competition_id"]
 
 
+def output_percentile(df: pd.DataFrame) -> pd.Series:
+    """0-100 output score within season and position group. Attackers and midfielders are judged on
+    npxG, xA and xGChain; defenders (no defensive data available) on xGChain and xGBuildup."""
+    keys = [df.season, df.position_group.astype(str)]
+    pct = {c: df.groupby(keys)[c].rank(pct=True) * 100 for c in ["npxG_p90", "xA_p90", "xGChain_p90", "xGBuildup_p90"]}
+    attack = (pct["npxG_p90"] + pct["xA_p90"] + pct["xGChain_p90"]) / 3
+    defence = (pct["xGChain_p90"] + pct["xGBuildup_p90"]) / 2
+    return attack.where(~df.position_group.astype(str).isin(["CB", "FB"]), defence)
+
+
 def team_strength() -> pd.DataFrame:
     t = pd.read_parquet(RAW / "understat" / "teams.parquet")
     return t.assign(team_xg_pm=t.team_xg / t.matches, team_xga_pm=t.team_xga / t.matches,

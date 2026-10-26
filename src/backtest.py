@@ -54,7 +54,12 @@ def shortlist_stats(picks: pd.DataFrame) -> dict:
     }
 
 
+def best_of(result: dict) -> str:
+    return max(result["models"], key=lambda m: result["models"][m]["shortlist"]["mean_excess_pct"])
+
+
 def evaluate(bt: pd.DataFrame) -> dict:
+    bt["output_pct"] = F.output_percentile(bt)
     budget = bt[bt.value_eur <= BUDGET_EUR]
     result = {"flag_seasons": [f"{s}/{s - 1999:02d}" for s in FLAG_SEASONS], "players_scored": int(len(bt)),
               "shortlist_size_per_season": SHORTLIST, "budget_eur": BUDGET_EUR, "models": {}}
@@ -71,6 +76,12 @@ def evaluate(bt: pd.DataFrame) -> dict:
     # Naive scout baseline: pick the best attacking output per 90 within budget.
     naive = budget.assign(o=budget.npxG_p90 + budget.xA_p90).sort_values("o", ascending=False).groupby("season").head(SHORTLIST)
     result["naive_output_baseline"] = shortlist_stats(naive)
+    # Trade-off: requiring real production on top of the value gap.
+    result["output_filter_sensitivity"] = {
+        int(t): shortlist_stats(budget[budget.output_pct >= t].sort_values(f"gap_{best_of(result)}", ascending=False)
+                                .groupby("season").head(SHORTLIST))
+        for t in (0, 25, 50, 75)
+    }
     result["all_budget_players"] = shortlist_stats(budget)
     return result
 
@@ -80,8 +91,7 @@ def main():
     df = df[df.value_eur > 0].reset_index(drop=True)
     bt = walk_forward(df)
     result = evaluate(bt)
-    best = max(MODELS, key=lambda m: result["models"][m]["shortlist"]["mean_excess_pct"])
-    result["best_model"] = best
+    best = result["best_model"] = best_of(result)
     picks = (bt[bt.value_eur <= BUDGET_EUR].sort_values(f"gap_{best}", ascending=False).groupby("season").head(SHORTLIST))
     result["example_picks"] = [
         {"player": r.tm_name, "season": f"{r.season}/{r.season - 1999:02d}", "team": r.team, "age": round(r.age, 1),

@@ -22,6 +22,7 @@ def main():
     # Percentiles within season and position group, for radar charts and plain-English summaries.
     for c in F.PER90_COLS + ["minutes_share"]:
         df[f"{c}_pct"] = df.groupby(["season", "position_group"], observed=True)[c].rank(pct=True) * 100
+    df["output_pct"] = F.output_percentile(df)
     df["position_group"] = df.position_group.astype(str)
     df["competition_id"] = df.competition_id.astype(str)
     cols = KEEP + [c for c in df.columns if c.endswith("_pct")]
