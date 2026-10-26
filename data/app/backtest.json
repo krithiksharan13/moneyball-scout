@@ -1,0 +1,1260 @@
+{
+  "flag_seasons": [
+    "2019/20",
+    "2020/21",
+    "2021/22",
+    "2022/23",
+    "2023/24"
+  ],
+  "players_scored": 6751,
+  "shortlist_size_per_season": 25,
+  "budget_eur": 30000000,
+  "models": {
+    "market": {
+      "spearman_gap_vs_excess": 0.152,
+      "decile_excess_pct": {
+        "1": -14.8,
+        "2": -8.7,
+        "3": -9.1,
+        "4": 0.1,
+        "5": 1.0,
+        "6": -2.4,
+        "7": -0.8,
+        "8": 3.7,
+        "9": 10.5,
+        "10": 26.1
+      },
+      "shortlist": {
+        "n": 125,
+        "median_value_change_pct": 0.0,
+        "mean_excess_pct": 38.4,
+        "hit_rate_pct": 68.0
+      },
+      "by_season": {
+        "2019": {
+          "n": 25,
+          "median_value_change_pct": 56.2,
+          "mean_excess_pct": 86.3,
+          "hit_rate_pct": 84.0
+        },
+        "2020": {
+          "n": 25,
+          "median_value_change_pct": -37.5,
+          "mean_excess_pct": 27.0,
+          "hit_rate_pct": 68.0
+        },
+        "2021": {
+          "n": 25,
+          "median_value_change_pct": -12.5,
+          "mean_excess_pct": 28.6,
+          "hit_rate_pct": 56.0
+        },
+        "2022": {
+          "n": 25,
+          "median_value_change_pct": 0.0,
+          "mean_excess_pct": 33.6,
+          "hit_rate_pct": 76.0
+        },
+        "2023": {
+          "n": 25,
+          "median_value_change_pct": -27.8,
+          "mean_excess_pct": 24.7,
+          "hit_rate_pct": 56.0
+        }
+      }
+    },
+    "performance": {
+      "spearman_gap_vs_excess": 0.095,
+      "decile_excess_pct": {
+        "1": -9.9,
+        "2": -6.9,
+        "3": -2.4,
+        "4": -1.7,
+        "5": -1.2,
+        "6": -0.6,
+        "7": 2.1,
+        "8": -0.5,
+        "9": 10.8,
+        "10": 12.4
+      },
+      "shortlist": {
+        "n": 125,
+        "median_value_change_pct": -4.0,
+        "mean_excess_pct": 19.6,
+        "hit_rate_pct": 60.0
+      },
+      "by_season": {
+        "2019": {
+          "n": 25,
+          "median_value_change_pct": 23.1,
+          "mean_excess_pct": 44.7,
+          "hit_rate_pct": 80.0
+        },
+        "2020": {
+          "n": 25,
+          "median_value_change_pct": -37.5,
+          "mean_excess_pct": 9.2,
+          "hit_rate_pct": 56.0
+        },
+        "2021": {
+          "n": 25,
+          "median_value_change_pct": -33.3,
+          "mean_excess_pct": -2.7,
+          "hit_rate_pct": 40.0
+        },
+        "2022": {
+          "n": 25,
+          "median_value_change_pct": 0.0,
+          "mean_excess_pct": 26.2,
+          "hit_rate_pct": 72.0
+        },
+        "2023": {
+          "n": 25,
+          "median_value_change_pct": -16.7,
+          "mean_excess_pct": 26.2,
+          "hit_rate_pct": 52.0
+        }
+      }
+    }
+  },
+  "naive_output_baseline": {
+    "n": 125,
+    "median_value_change_pct": -50.0,
+    "mean_excess_pct": 5.6,
+    "hit_rate_pct": 56.0
+  },
+  "all_budget_players": {
+    "n": 5833,
+    "median_value_change_pct": -36.0,
+    "mean_excess_pct": 0.1,
+    "hit_rate_pct": 50.4
+  },
+  "best_model": "market",
+  "example_picks": [
+    {
+      "player": "Arthur Atta",
+      "season": "2023/24",
+      "team": "Metz",
+      "age": 21.5,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 25000000.0,
+      "gap": 1.15
+    },
+    {
+      "player": "Math\u00edas Olivera",
+      "season": "2019/20",
+      "team": "Getafe",
+      "age": 22.7,
+      "value_eur": 1600000.0,
+      "value_eur_plus2": 15000000.0,
+      "gap": 1.44
+    },
+    {
+      "player": "James Justin",
+      "season": "2019/20",
+      "team": "Leicester",
+      "age": 22.4,
+      "value_eur": 3600000.0,
+      "value_eur_plus2": 25000000.0,
+      "gap": 1.82
+    },
+    {
+      "player": "Ademola Lookman",
+      "season": "2021/22",
+      "team": "Leicester",
+      "age": 24.7,
+      "value_eur": 10000000.0,
+      "value_eur_plus2": 40000000.0,
+      "gap": 1.12
+    },
+    {
+      "player": "Gorka Guruzeta",
+      "season": "2022/23",
+      "team": "Athletic Club",
+      "age": 26.8,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 9000000.0,
+      "gap": 1.67
+    },
+    {
+      "player": "Jacob Murphy",
+      "season": "2020/21",
+      "team": "Newcastle United",
+      "age": 26.3,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 15000000.0,
+      "gap": 1.05
+    },
+    {
+      "player": "Robert Andrich",
+      "season": "2019/20",
+      "team": "Union Berlin",
+      "age": 25.8,
+      "value_eur": 2400000.0,
+      "value_eur_plus2": 13000000.0,
+      "gap": 1.16
+    },
+    {
+      "player": "Alexander S\u00f8rloth",
+      "season": "2022/23",
+      "team": "Real Sociedad",
+      "age": 27.6,
+      "value_eur": 12000000.0,
+      "value_eur_plus2": 25000000.0,
+      "gap": 1.07
+    },
+    {
+      "player": "Carlos Neva",
+      "season": "2019/20",
+      "team": "Granada",
+      "age": 24.1,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 4000000.0,
+      "gap": 1.53
+    },
+    {
+      "player": "Mikel Vesga",
+      "season": "2020/21",
+      "team": "Athletic Club",
+      "age": 28.2,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 6000000.0,
+      "gap": 1.04
+    },
+    {
+      "player": "Tommaso Augello",
+      "season": "2019/20",
+      "team": "Sampdoria",
+      "age": 25.8,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 3500000.0,
+      "gap": 1.39
+    },
+    {
+      "player": "Salva Sevilla",
+      "season": "2019/20",
+      "team": "Mallorca",
+      "age": 36.3,
+      "value_eur": 200000.0,
+      "value_eur_plus2": 300000.0,
+      "gap": 1.32
+    },
+    {
+      "player": "Eduard L\u00f6wen",
+      "season": "2021/22",
+      "team": "Bochum",
+      "age": 25.4,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 5500000.0,
+      "gap": 0.95
+    },
+    {
+      "player": "Ricardo Mangas",
+      "season": "2021/22",
+      "team": "Bordeaux",
+      "age": 24.3,
+      "value_eur": 1500000.0,
+      "value_eur_plus2": 4000000.0,
+      "gap": 1.16
+    },
+    {
+      "player": "Alexsandro",
+      "season": "2022/23",
+      "team": "Lille",
+      "age": 23.9,
+      "value_eur": 5000000.0,
+      "value_eur_plus2": 20000000.0,
+      "gap": 1.0
+    },
+    {
+      "player": "Benno Schmitz",
+      "season": "2019/20",
+      "team": "FC Cologne",
+      "age": 25.6,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 1.22
+    },
+    {
+      "player": "I\u00f1igo P\u00e9rez",
+      "season": "2019/20",
+      "team": "Osasuna",
+      "age": 32.5,
+      "value_eur": 475000.0,
+      "value_eur_plus2": 600000.0,
+      "gap": 1.37
+    },
+    {
+      "player": "Goran Pandev",
+      "season": "2019/20",
+      "team": "Genoa",
+      "age": 36.9,
+      "value_eur": 325000.0,
+      "value_eur_plus2": 400000.0,
+      "gap": 1.19
+    },
+    {
+      "player": "J\u00e9r\u00e9my Morel",
+      "season": "2019/20",
+      "team": "Rennes",
+      "age": 36.2,
+      "value_eur": 250000.0,
+      "value_eur_plus2": 300000.0,
+      "gap": 1.61
+    },
+    {
+      "player": "Bruno Peres",
+      "season": "2019/20",
+      "team": "Roma",
+      "age": 30.3,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 2400000.0,
+      "gap": 1.59
+    },
+    {
+      "player": "Hugo Duro",
+      "season": "2022/23",
+      "team": "Valencia",
+      "age": 23.6,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 14000000.0,
+      "gap": 0.95
+    },
+    {
+      "player": "Aitor Ruibal",
+      "season": "2020/21",
+      "team": "Real Betis",
+      "age": 25.3,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 5000000.0,
+      "gap": 1.83
+    },
+    {
+      "player": "Massimiliano Mangraviti",
+      "season": "2019/20",
+      "team": "Brescia",
+      "age": 22.4,
+      "value_eur": 200000.0,
+      "value_eur_plus2": 800000.0,
+      "gap": 1.61
+    },
+    {
+      "player": "Florian Sotoca",
+      "season": "2021/22",
+      "team": "Lens",
+      "age": 31.7,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 0.96
+    },
+    {
+      "player": "Quini",
+      "season": "2020/21",
+      "team": "Granada",
+      "age": 31.8,
+      "value_eur": 400000.0,
+      "value_eur_plus2": 400000.0,
+      "gap": 1.47
+    },
+    {
+      "player": "Mads Roerslev",
+      "season": "2021/22",
+      "team": "Brentford",
+      "age": 23.0,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 10000000.0,
+      "gap": 0.95
+    },
+    {
+      "player": "Nadir Zortea",
+      "season": "2023/24",
+      "team": "Atalanta,Frosinone",
+      "age": 25.0,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 7000000.0,
+      "gap": 0.91
+    },
+    {
+      "player": "Dante",
+      "season": "2023/24",
+      "team": "Nice",
+      "age": 40.7,
+      "value_eur": 500000.0,
+      "value_eur_plus2": 500000.0,
+      "gap": 1.02
+    },
+    {
+      "player": "Filip Djuricic",
+      "season": "2019/20",
+      "team": "Sassuolo",
+      "age": 28.4,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 4000000.0,
+      "gap": 1.25
+    },
+    {
+      "player": "Borja Mayoral",
+      "season": "2019/20",
+      "team": "Levante",
+      "age": 23.2,
+      "value_eur": 3200000.0,
+      "value_eur_plus2": 9000000.0,
+      "gap": 1.21
+    },
+    {
+      "player": "Charalampos Lykogiannis",
+      "season": "2022/23",
+      "team": "Bologna",
+      "age": 29.7,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.22
+    },
+    {
+      "player": "Habib Ke\u00efta",
+      "season": "2023/24",
+      "team": "Clermont Foot",
+      "age": 22.4,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.04
+    },
+    {
+      "player": "Th\u00e9o Le Bris",
+      "season": "2023/24",
+      "team": "Lorient",
+      "age": 21.7,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 5000000.0,
+      "gap": 1.1
+    },
+    {
+      "player": "Daniele Verde",
+      "season": "2020/21",
+      "team": "Spezia",
+      "age": 25.0,
+      "value_eur": 1500000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 1.53
+    },
+    {
+      "player": "Wesley Sa\u00efd",
+      "season": "2023/24",
+      "team": "Lens",
+      "age": 29.2,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 5000000.0,
+      "gap": 0.96
+    },
+    {
+      "player": "Mattia Valoti",
+      "season": "2019/20",
+      "team": "SPAL 2013",
+      "age": 26.8,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 1.4
+    },
+    {
+      "player": "Antonio S\u00e1nchez",
+      "season": "2021/22",
+      "team": "Mallorca",
+      "age": 25.2,
+      "value_eur": 1500000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.07
+    },
+    {
+      "player": "Eric Garc\u00eda",
+      "season": "2023/24",
+      "team": "Barcelona,Girona",
+      "age": 23.5,
+      "value_eur": 20000000.0,
+      "value_eur_plus2": 40000000.0,
+      "gap": 0.91
+    },
+    {
+      "player": "Marcus Ingvartsen",
+      "season": "2020/21",
+      "team": "Union Berlin",
+      "age": 25.5,
+      "value_eur": 3500000.0,
+      "value_eur_plus2": 5500000.0,
+      "gap": 1.11
+    },
+    {
+      "player": "Quini",
+      "season": "2021/22",
+      "team": "Granada",
+      "age": 32.8,
+      "value_eur": 400000.0,
+      "value_eur_plus2": 350000.0,
+      "gap": 1.31
+    },
+    {
+      "player": "Lyanco",
+      "season": "2022/23",
+      "team": "Southampton",
+      "age": 26.4,
+      "value_eur": 3500000.0,
+      "value_eur_plus2": 6000000.0,
+      "gap": 1.14
+    },
+    {
+      "player": "Ashley Young",
+      "season": "2022/23",
+      "team": "Aston Villa",
+      "age": 38.0,
+      "value_eur": 600000.0,
+      "value_eur_plus2": 500000.0,
+      "gap": 1.16
+    },
+    {
+      "player": "Eric Garc\u00eda",
+      "season": "2022/23",
+      "team": "Barcelona",
+      "age": 22.5,
+      "value_eur": 10000000.0,
+      "value_eur_plus2": 18000000.0,
+      "gap": 1.24
+    },
+    {
+      "player": "Mikel Vesga",
+      "season": "2021/22",
+      "team": "Athletic Club",
+      "age": 29.2,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 4000000.0,
+      "gap": 1.0
+    },
+    {
+      "player": "Moussa Diarra",
+      "season": "2022/23",
+      "team": "Toulouse",
+      "age": 22.6,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 1800000.0,
+      "gap": 1.07
+    },
+    {
+      "player": "Sergio C\u00f3rdova",
+      "season": "2020/21",
+      "team": "Arminia Bielefeld",
+      "age": 23.9,
+      "value_eur": 1200000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.28
+    },
+    {
+      "player": "Bradley Locko",
+      "season": "2021/22",
+      "team": "Reims",
+      "age": 20.2,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 12000000.0,
+      "gap": 0.96
+    },
+    {
+      "player": "Omar Mascarell",
+      "season": "2023/24",
+      "team": "Mallorca",
+      "age": 31.4,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 700000.0,
+      "gap": 1.1
+    },
+    {
+      "player": "Nehu\u00e9n Paz",
+      "season": "2019/20",
+      "team": "Bologna,Lecce",
+      "age": 27.2,
+      "value_eur": 325000.0,
+      "value_eur_plus2": 450000.0,
+      "gap": 1.72
+    },
+    {
+      "player": "Rodrigo Bec\u00e3o",
+      "season": "2021/22",
+      "team": "Udinese",
+      "age": 26.4,
+      "value_eur": 6000000.0,
+      "value_eur_plus2": 8000000.0,
+      "gap": 0.98
+    },
+    {
+      "player": "Iv\u00e1n Alejo",
+      "season": "2021/22",
+      "team": "Cadiz",
+      "age": 27.4,
+      "value_eur": 1200000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.1
+    },
+    {
+      "player": "Aleksandar Sedlar",
+      "season": "2023/24",
+      "team": "Alaves",
+      "age": 32.6,
+      "value_eur": 400000.0,
+      "value_eur_plus2": 275000.0,
+      "gap": 1.03
+    },
+    {
+      "player": "Kelyan Guessoum",
+      "season": "2020/21",
+      "team": "Nimes",
+      "age": 22.4,
+      "value_eur": 500000.0,
+      "value_eur_plus2": 600000.0,
+      "gap": 1.46
+    },
+    {
+      "player": "Pascal Gro\u00df",
+      "season": "2022/23",
+      "team": "Brighton",
+      "age": 32.0,
+      "value_eur": 8000000.0,
+      "value_eur_plus2": 5000000.0,
+      "gap": 0.91
+    },
+    {
+      "player": "\u00d3scar Duarte",
+      "season": "2020/21",
+      "team": "Levante",
+      "age": 32.1,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 500000.0,
+      "gap": 1.04
+    },
+    {
+      "player": "Julien Faussurier",
+      "season": "2020/21",
+      "team": "Brest",
+      "age": 34.5,
+      "value_eur": 400000.0,
+      "value_eur_plus2": 250000.0,
+      "gap": 1.19
+    },
+    {
+      "player": "Rafael Czichos",
+      "season": "2020/21",
+      "team": "FC Cologne",
+      "age": 31.1,
+      "value_eur": 1300000.0,
+      "value_eur_plus2": 800000.0,
+      "gap": 1.11
+    },
+    {
+      "player": "Ashley Young",
+      "season": "2020/21",
+      "team": "Inter",
+      "age": 36.0,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 600000.0,
+      "gap": 1.03
+    },
+    {
+      "player": "Anthony Jung",
+      "season": "2023/24",
+      "team": "Werder Bremen",
+      "age": 32.7,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 600000.0,
+      "gap": 0.98
+    },
+    {
+      "player": "Mateusz Klich",
+      "season": "2020/21",
+      "team": "Leeds",
+      "age": 31.0,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 1.04
+    },
+    {
+      "player": "Steven Alzate",
+      "season": "2019/20",
+      "team": "Brighton",
+      "age": 21.8,
+      "value_eur": 2300000.0,
+      "value_eur_plus2": 5000000.0,
+      "gap": 1.44
+    },
+    {
+      "player": "Adam Smith",
+      "season": "2022/23",
+      "team": "Bournemouth",
+      "age": 32.2,
+      "value_eur": 1200000.0,
+      "value_eur_plus2": 750000.0,
+      "gap": 1.04
+    },
+    {
+      "player": "Deiver Machado",
+      "season": "2022/23",
+      "team": "Lens",
+      "age": 29.8,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 0.99
+    },
+    {
+      "player": "Tommaso Augello",
+      "season": "2022/23",
+      "team": "Sampdoria",
+      "age": 28.8,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 1800000.0,
+      "gap": 0.92
+    },
+    {
+      "player": "Dani G\u00f3mez",
+      "season": "2020/21",
+      "team": "Levante",
+      "age": 22.9,
+      "value_eur": 1500000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.06
+    },
+    {
+      "player": "L\u00e9o Leroy",
+      "season": "2022/23",
+      "team": "Montpellier",
+      "age": 23.4,
+      "value_eur": 1200000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 1.29
+    },
+    {
+      "player": "Marvin Senaya",
+      "season": "2023/24",
+      "team": "Strasbourg",
+      "age": 23.4,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 1.05
+    },
+    {
+      "player": "Marcus Ingvartsen",
+      "season": "2019/20",
+      "team": "Union Berlin",
+      "age": 24.5,
+      "value_eur": 1600000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.3
+    },
+    {
+      "player": "Sinaly Diomand\u00e9",
+      "season": "2020/21",
+      "team": "Lyon",
+      "age": 20.2,
+      "value_eur": 7000000.0,
+      "value_eur_plus2": 9000000.0,
+      "gap": 1.14
+    },
+    {
+      "player": "Florian Sotoca",
+      "season": "2022/23",
+      "team": "Lens",
+      "age": 32.7,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 0.96
+    },
+    {
+      "player": "Marius Wolf",
+      "season": "2023/24",
+      "team": "Borussia Dortmund",
+      "age": 29.1,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.16
+    },
+    {
+      "player": "Bastian Oczipka",
+      "season": "2020/21",
+      "team": "Schalke 04",
+      "age": 32.5,
+      "value_eur": 600000.0,
+      "value_eur_plus2": 300000.0,
+      "gap": 1.08
+    },
+    {
+      "player": "Yan Eteki",
+      "season": "2019/20",
+      "team": "Granada",
+      "age": 22.8,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.85
+    },
+    {
+      "player": "Thiago Silva",
+      "season": "2023/24",
+      "team": "Chelsea",
+      "age": 39.8,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 500000.0,
+      "gap": 1.04
+    },
+    {
+      "player": "Kastriot Dermaku",
+      "season": "2019/20",
+      "team": "Parma Calcio 1913",
+      "age": 28.5,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 800000.0,
+      "gap": 1.46
+    },
+    {
+      "player": "Kamory Doumbia",
+      "season": "2022/23",
+      "team": "Reims",
+      "age": 20.4,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 4000000.0,
+      "gap": 1.15
+    },
+    {
+      "player": "Jean-Eudes Aholou",
+      "season": "2020/21",
+      "team": "Monaco,Strasbourg",
+      "age": 27.3,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.31
+    },
+    {
+      "player": "Dion Lopy",
+      "season": "2021/22",
+      "team": "Reims",
+      "age": 20.4,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 10000000.0,
+      "gap": 0.91
+    },
+    {
+      "player": "Mouctar Diakhaby",
+      "season": "2023/24",
+      "team": "Valencia",
+      "age": 27.5,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.0
+    },
+    {
+      "player": "Pablo Herv\u00edas",
+      "season": "2019/20",
+      "team": "Real Valladolid",
+      "age": 27.3,
+      "value_eur": 650000.0,
+      "value_eur_plus2": 600000.0,
+      "gap": 1.37
+    },
+    {
+      "player": "Elvis Rexhbecaj",
+      "season": "2022/23",
+      "team": "Augsburg",
+      "age": 25.7,
+      "value_eur": 3500000.0,
+      "value_eur_plus2": 3500000.0,
+      "gap": 0.98
+    },
+    {
+      "player": "Elvis Rexhbecaj",
+      "season": "2021/22",
+      "team": "Bochum",
+      "age": 24.7,
+      "value_eur": 4000000.0,
+      "value_eur_plus2": 3500000.0,
+      "gap": 0.98
+    },
+    {
+      "player": "Emmanuel Gyasi",
+      "season": "2022/23",
+      "team": "Spezia",
+      "age": 29.5,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 1400000.0,
+      "gap": 1.08
+    },
+    {
+      "player": "Lucas H\u00f6ler",
+      "season": "2021/22",
+      "team": "Freiburg",
+      "age": 28.0,
+      "value_eur": 6500000.0,
+      "value_eur_plus2": 4000000.0,
+      "gap": 1.01
+    },
+    {
+      "player": "Valery Fern\u00e1ndez",
+      "season": "2022/23",
+      "team": "Girona",
+      "age": 23.6,
+      "value_eur": 1500000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 0.92
+    },
+    {
+      "player": "Shandon Baptiste",
+      "season": "2021/22",
+      "team": "Brentford",
+      "age": 24.2,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.14
+    },
+    {
+      "player": "Emmanuel Gyasi",
+      "season": "2021/22",
+      "team": "Spezia",
+      "age": 28.5,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 1800000.0,
+      "gap": 1.41
+    },
+    {
+      "player": "Boubacar Traor\u00e9",
+      "season": "2021/22",
+      "team": "Metz",
+      "age": 20.9,
+      "value_eur": 1800000.0,
+      "value_eur_plus2": 6000000.0,
+      "gap": 1.09
+    },
+    {
+      "player": "Fabian Klos",
+      "season": "2020/21",
+      "team": "Arminia Bielefeld",
+      "age": 33.6,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 300000.0,
+      "gap": 1.09
+    },
+    {
+      "player": "Grigoris Kastanos",
+      "season": "2022/23",
+      "team": "Salernitana",
+      "age": 25.4,
+      "value_eur": 1800000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 0.92
+    },
+    {
+      "player": "Marcus Coco",
+      "season": "2021/22",
+      "team": "Nantes",
+      "age": 26.0,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 0.92
+    },
+    {
+      "player": "Angelo Ogbonna",
+      "season": "2020/21",
+      "team": "West Ham",
+      "age": 33.1,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 900000.0,
+      "gap": 1.05
+    },
+    {
+      "player": "Henrique Silva",
+      "season": "2021/22",
+      "team": "Lyon",
+      "age": 28.2,
+      "value_eur": 1500000.0,
+      "value_eur_plus2": 1000000.0,
+      "gap": 1.16
+    },
+    {
+      "player": "Luca de la Torre",
+      "season": "2023/24",
+      "team": "Celta Vigo",
+      "age": 26.1,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 0.92
+    },
+    {
+      "player": "Sergio Camello",
+      "season": "2023/24",
+      "team": "Rayo Vallecano",
+      "age": 23.4,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 1.13
+    },
+    {
+      "player": "Damien Da Silva",
+      "season": "2021/22",
+      "team": "Lyon",
+      "age": 34.1,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 400000.0,
+      "gap": 1.33
+    },
+    {
+      "player": "Oriol Romeu",
+      "season": "2023/24",
+      "team": "Barcelona",
+      "age": 32.8,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 700000.0,
+      "gap": 1.47
+    },
+    {
+      "player": "Bruno Amione",
+      "season": "2022/23",
+      "team": "Sampdoria,Verona",
+      "age": 21.5,
+      "value_eur": 2700000.0,
+      "value_eur_plus2": 2800000.0,
+      "gap": 0.94
+    },
+    {
+      "player": "Mitchel Bakker",
+      "season": "2020/21",
+      "team": "Paris Saint Germain",
+      "age": 21.0,
+      "value_eur": 10000000.0,
+      "value_eur_plus2": 9000000.0,
+      "gap": 1.09
+    },
+    {
+      "player": "Julian Baumgartlinger",
+      "season": "2019/20",
+      "team": "Bayer Leverkusen",
+      "age": 32.5,
+      "value_eur": 2400000.0,
+      "value_eur_plus2": 800000.0,
+      "gap": 1.51
+    },
+    {
+      "player": "David Da Costa",
+      "season": "2022/23",
+      "team": "Lens",
+      "age": 22.5,
+      "value_eur": 8000000.0,
+      "value_eur_plus2": 6000000.0,
+      "gap": 1.02
+    },
+    {
+      "player": "Sergi Roberto",
+      "season": "2022/23",
+      "team": "Barcelona",
+      "age": 31.4,
+      "value_eur": 5000000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.03
+    },
+    {
+      "player": "Grigoris Kastanos",
+      "season": "2023/24",
+      "team": "Salernitana",
+      "age": 26.4,
+      "value_eur": 1800000.0,
+      "value_eur_plus2": 1300000.0,
+      "gap": 0.93
+    },
+    {
+      "player": "\u00d3scar Rodr\u00edguez",
+      "season": "2023/24",
+      "team": "Getafe",
+      "age": 26.0,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 1800000.0,
+      "gap": 1.11
+    },
+    {
+      "player": "Pascal Stenzel",
+      "season": "2023/24",
+      "team": "VfB Stuttgart",
+      "age": 28.3,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 1200000.0,
+      "gap": 1.43
+    },
+    {
+      "player": "Adam Smith",
+      "season": "2023/24",
+      "team": "Bournemouth",
+      "age": 33.2,
+      "value_eur": 1000000.0,
+      "value_eur_plus2": 300000.0,
+      "gap": 1.02
+    },
+    {
+      "player": "Mark Uth",
+      "season": "2021/22",
+      "team": "FC Cologne",
+      "age": 30.9,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 1000000.0,
+      "gap": 0.97
+    },
+    {
+      "player": "Lucas Perrin",
+      "season": "2023/24",
+      "team": "Strasbourg",
+      "age": 25.6,
+      "value_eur": 3000000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 0.97
+    },
+    {
+      "player": "Alexis Saelemaekers",
+      "season": "2021/22",
+      "team": "AC Milan",
+      "age": 23.0,
+      "value_eur": 17000000.0,
+      "value_eur_plus2": 12000000.0,
+      "gap": 1.2
+    },
+    {
+      "player": "Steven Fortes",
+      "season": "2020/21",
+      "team": "Lens",
+      "age": 29.2,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 400000.0,
+      "gap": 1.06
+    },
+    {
+      "player": "Ramon Azeez",
+      "season": "2019/20",
+      "team": "Granada",
+      "age": 27.6,
+      "value_eur": 800000.0,
+      "value_eur_plus2": 400000.0,
+      "gap": 2.0
+    },
+    {
+      "player": "Riccardo Saponara",
+      "season": "2021/22",
+      "team": "Fiorentina",
+      "age": 30.5,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 700000.0,
+      "gap": 1.24
+    },
+    {
+      "player": "Aymen Barkok",
+      "season": "2020/21",
+      "team": "Eintracht Frankfurt",
+      "age": 23.1,
+      "value_eur": 3500000.0,
+      "value_eur_plus2": 2000000.0,
+      "gap": 1.32
+    },
+    {
+      "player": "Yan Eteki",
+      "season": "2020/21",
+      "team": "Granada",
+      "age": 23.8,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 800000.0,
+      "gap": 1.03
+    },
+    {
+      "player": "Giuseppe Pezzella",
+      "season": "2021/22",
+      "team": "Atalanta",
+      "age": 24.6,
+      "value_eur": 5000000.0,
+      "value_eur_plus2": 2200000.0,
+      "gap": 0.98
+    },
+    {
+      "player": "Jonas Hofmann",
+      "season": "2023/24",
+      "team": "Bayer Leverkusen",
+      "age": 32.0,
+      "value_eur": 10000000.0,
+      "value_eur_plus2": 1500000.0,
+      "gap": 1.39
+    },
+    {
+      "player": "Emil Krafth",
+      "season": "2023/24",
+      "team": "Newcastle United",
+      "age": 29.9,
+      "value_eur": 2500000.0,
+      "value_eur_plus2": 750000.0,
+      "gap": 1.23
+    },
+    {
+      "player": "Ignatius Ganago",
+      "season": "2021/22",
+      "team": "Lens",
+      "age": 23.4,
+      "value_eur": 5000000.0,
+      "value_eur_plus2": 3000000.0,
+      "gap": 0.97
+    },
+    {
+      "player": "Renato Steffen",
+      "season": "2020/21",
+      "team": "Wolfsburg",
+      "age": 29.7,
+      "value_eur": 4500000.0,
+      "value_eur_plus2": 1000000.0,
+      "gap": 1.13
+    },
+    {
+      "player": "Iv\u00e1n Mart\u00edn",
+      "season": "2023/24",
+      "team": "Girona",
+      "age": 25.4,
+      "value_eur": 15000000.0,
+      "value_eur_plus2": 5000000.0,
+      "gap": 0.96
+    },
+    {
+      "player": "Jos\u00e9 Fonte",
+      "season": "2022/23",
+      "team": "Lille",
+      "age": 39.5,
+      "value_eur": 600000.0,
+      "value_eur_plus2": 100000.0,
+      "gap": 0.89
+    },
+    {
+      "player": "Francesco Cassata",
+      "season": "2019/20",
+      "team": "Genoa",
+      "age": 23.0,
+      "value_eur": 2400000.0,
+      "value_eur_plus2": 900000.0,
+      "gap": 1.24
+    },
+    {
+      "player": "Ander Guevara",
+      "season": "2020/21",
+      "team": "Real Sociedad",
+      "age": 24.0,
+      "value_eur": 7500000.0,
+      "value_eur_plus2": 2500000.0,
+      "gap": 1.07
+    },
+    {
+      "player": "Flavien Tait",
+      "season": "2022/23",
+      "team": "Rennes",
+      "age": 30.4,
+      "value_eur": 6000000.0,
+      "value_eur_plus2": 450000.0,
+      "gap": 0.88
+    },
+    {
+      "player": "Lo\u00efc R\u00e9my",
+      "season": "2019/20",
+      "team": "Lille",
+      "age": 33.5,
+      "value_eur": 2000000.0,
+      "value_eur_plus2": 150000.0,
+      "gap": 1.32
+    }
+  ]
+}

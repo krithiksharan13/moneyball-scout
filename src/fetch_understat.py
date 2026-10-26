@@ -17,7 +17,7 @@ LEAGUES = {
     "Ligue_1": "FR1",
 }
 SEASONS = range(2019, 2026)  # 2019/20 .. 2025/26
-OUT = Path(__file__).resolve().parents[1] / "data" / "raw" / "understat" / "players.parquet"
+OUT_DIR = Path(__file__).resolve().parents[1] / "data" / "raw" / "understat"
 
 NUMERIC = ["games", "time", "goals", "xG", "assists", "xA", "shots", "key_passes",
            "yellow_cards", "red_cards", "npg", "npxG", "xGChain", "xGBuildup"]
@@ -25,31 +25,39 @@ NUMERIC = ["games", "time", "goals", "xG", "assists", "xA", "shots", "key_passes
 HEADERS = {"User-Agent": "Mozilla/5.0", "X-Requested-With": "XMLHttpRequest"}
 
 
-def fetch(league: str, season: int) -> pd.DataFrame:
+def fetch(league: str, season: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     url = f"https://understat.com/getLeagueData/{league}/{season}"
     r = requests.get(url, headers=HEADERS, timeout=60)
     r.raise_for_status()
-    df = pd.DataFrame(r.json()["players"])
-    df["league"] = league
-    df["competition_id"] = LEAGUES[league]
-    df["season"] = season
-    return df
+    data = r.json()
+    meta = {"league": league, "competition_id": LEAGUES[league], "season": season}
+    players = pd.DataFrame(data["players"]).assign(**meta)
+    # Team-season strength from per-match history.
+    teams = pd.DataFrame([
+        {"team": t["title"], "matches": len(t["history"]),
+         "team_xg": sum(m["xG"] for m in t["history"]), "team_xga": sum(m["xGA"] for m in t["history"]),
+         "team_pts": sum(m["pts"] for m in t["history"])}
+        for t in data["teams"].values()
+    ]).assign(**meta)
+    return players, teams
 
 
 def main() -> None:
-    frames = []
+    frames, team_frames = [], []
     for league in LEAGUES:
         for season in SEASONS:
-            df = fetch(league, season)
+            df, teams = fetch(league, season)
             print(f"{league} {season}/{season + 1 - 2000}: {len(df)} players")
             frames.append(df)
+            team_frames.append(teams)
             time.sleep(1)
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    pd.concat(team_frames, ignore_index=True).to_parquet(OUT_DIR / "teams.parquet", index=False)
     df = pd.concat(frames, ignore_index=True)
     df[NUMERIC] = df[NUMERIC].apply(pd.to_numeric)
     df = df.rename(columns={"id": "understat_id", "time": "minutes", "team_title": "team"})
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    df.to_parquet(OUT, index=False)
-    print(f"Saved {len(df)} rows -> {OUT}")
+    df.to_parquet(OUT_DIR / "players.parquet", index=False)
+    print(f"Saved {len(df)} rows -> {OUT_DIR}")
 
 
 if __name__ == "__main__":
