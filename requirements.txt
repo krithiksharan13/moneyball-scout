@@ -1,0 +1,8 @@
+pandas>=2.2
+pyarrow>=17
+requests>=2.32
+rapidfuzz>=3.9
+scikit-learn>=1.5
+lightgbm>=4.5
+streamlit>=1.40
+plotly>=5.24

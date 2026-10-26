@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+data/raw/
+data/processed/player_seasons.parquet
+.streamlit/secrets.toml
+.env
