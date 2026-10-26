@@ -44,3 +44,11 @@ def undervalued(players: pd.DataFrame, season: int, max_value: float | None = No
     if positions:
         res = res[res.position_group.isin(positions)]
     return res.sort_values("value_gap", ascending=False).head(n)
+
+
+def featured_pick(players: pd.DataFrame, season: int) -> str | None:
+    """A showcase default: the most undervalued regular starter with solid attacking output."""
+    pool = players[(players.season == season) & (players.minutes >= 1800) & (players.output_pct >= 60)
+                   & (players.value_eur <= 30e6) & (players.age <= 26)
+                   & players.position_group.isin(["FW", "W", "AM", "CM"])]
+    return pool.sort_values("value_gap", ascending=False).tm_name.iloc[0] if len(pool) else None

@@ -50,7 +50,7 @@ season = f1.selectbox("Season", seasons, index=seasons.index(default_season) if 
                       format_func=ui.season_label)
 st.session_state["report_season"] = int(season)
 with f2:
-    p = ui.player_picker(players, season, key="report_player", default_name="Adrián Liso")
+    p = ui.player_picker(players, season, key="report_player", default_name=scout.featured_pick(players, season))
 
 contract = "–" if pd.isna(p.contract_expiration_date) else pd.Timestamp(p.contract_expiration_date).strftime("%b %Y")
 c.profile(p, ui.season_label(season), contract)
